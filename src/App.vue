@@ -12,8 +12,8 @@
     </div>
     <Results v-if="showResults" :score="score" />
 
-    <div class="blockWrapper border-double border-4 border-indigo-600 m-12 h-3/4">
-        <Block v-if="isPlaying" :delay="delay" @end="endGame" />
+    <div ref="blockWrapper" class="blockWrapper border-double border-4 border-indigo-600 m-12 h-3/4 relative">
+        <Block v-if="isPlaying" :delay="delay" @end="endGame" :wrapperWidth="wrapperWidth" :wrapperHeight="wrapperHeight" />
     </div>
 </template>
 
@@ -30,13 +30,20 @@ export default {
             delay: null,
             score: null,
             showResults: false,
+            wrapperWidth: null,
+            wrapperHeight: null,
         }
+    },
+    mounted() {
+        const wrapperElement = this.$refs.blockWrapper
+        const wrapperRect = wrapperElement.getBoundingClientRect()
+        this.wrapperWidth = wrapperRect.width
+        this.wrapperHeight = wrapperRect.height
     },
     methods: {
         start() {
             this.delay = 2000 + Math.random() * 5000
             this.isPlaying = true
-            console.log(this.delay)
             this.showResults = false
         },
         endGame(reactionTime) {
