@@ -6,7 +6,7 @@
         class="absolute w-1/6 h-1/6 bg-cyan-500 flex items-center justify-center text-4xl text-white"
         :style="{ left: blockLeft + 'px', top: blockTop + 'px' }"
     >
-        <p>Here</p>
+        <p>CLICK</p>
     </div>
 </template>
 
@@ -34,8 +34,6 @@ export default {
                 const targetRect = targetElement.getBoundingClientRect()
                 this.blockWidth = targetRect.width
                 this.blockHeight = targetRect.height
-                console.log(this.wrapperHeight)
-                console.log(this.blockWidth, this.blockHeight)
                 this.calculatePosition()
             })
         }, this.delay)

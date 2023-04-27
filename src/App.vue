@@ -42,7 +42,7 @@ export default {
     },
     methods: {
         start() {
-            this.delay = Math.random() * 1000
+            this.delay = 2000 + Math.random() * 5000
             this.isPlaying = true
             this.showResults = false
         },
